@@ -1,1 +1,15 @@
 #!/usr/bin/env python3
+
+from argparse import ArgumentParser
+import subprocess
+
+description = "Split an audio file using a CUE file, and transfer any tags to the produced files."
+
+parser = ArgumentParser(description = description)
+parser.add_argument("cuefile", metavar = "CUE", type=str,
+        help="CUE file to be parsed")
+parser.add_argument("audiofile", metavar = "AUDIO", type=str,
+        help="audio file to be split")
+parser.add_argument("-f", "--format", default="flac", type=str,
+        help="audio format defaults to FLAC")
+args = parser.parse_args()
