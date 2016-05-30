@@ -13,3 +13,9 @@ parser.add_argument("audiofile", metavar = "AUDIO", type=str,
 parser.add_argument("-f", "--format", default="flac", type=str,
         help="audio format defaults to FLAC")
 args = parser.parse_args()
+
+cuebreakpoints = subprocess.run([ "cuebreakpoints", args.cuefile ],
+        stderr=subprocess.STDOUT, stdout=subprocess.PIPE).stdout\
+	.decode().strip().split()
+for cuebreakpoint in cuebreakpoints:
+    print(cuebreakpoint)
